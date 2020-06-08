@@ -58,6 +58,7 @@ class deploy {
         
         docker::run { 'deploycontainer':
                 image   => 'martin1051/myapp:latest',
-                ports  => '8080',
+                ports  => '80',
+                expose => '8080',
         }
 }
