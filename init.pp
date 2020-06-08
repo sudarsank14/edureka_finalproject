@@ -52,10 +52,6 @@ class deploy {
                 enable => 'true',
         }
         
-        docker::run { 'deploycontainer':
-                ensure => absent,
-        }
-        
         docker::image{'martin1051/myapp':
                 image_tag => 'latest',
         }
