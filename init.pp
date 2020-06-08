@@ -57,12 +57,6 @@ class deploy {
         }
         
         docker::image{'martin1051/myapp':
-                ensure => 'absent',
-                image_tag => 'latest'
-                
-        }
-        
-        docker::image{'martin1051/myapp':
                 image_tag => 'latest',
         }
         
