@@ -1,4 +1,4 @@
-Class: deploy
+#Class: deploy
 # ===========================
 #
 # Full description of class deploy here.
