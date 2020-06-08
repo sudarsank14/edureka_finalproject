@@ -51,9 +51,20 @@ class deploy {
                 ensure => 'running',
                 enable => 'true',
         }
+        
+        docker::run { 'deploycontainer':
+                ensure => absent,
+        }
+        
+        docker::image{'martin1051/myapp':
+                image_tag => 'latest'
+                ensure => absent,
+        }
+        
         docker::image{'martin1051/myapp':
                 image_tag => 'latest'
         }
+        
         docker::run { 'deploycontainer':
                 image   => 'martin1051/myapp:latest',
                 ports  => '8080',
