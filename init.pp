@@ -54,4 +54,8 @@ class deploy {
         docker::image{'martin1051/myapp':
                 image_tag => 'latest'
         }
+        docker::run { 'deploycontainer':
+                image   => 'martin1051/myapp:latest',
+                ports  => '8080',
+        }
 }
