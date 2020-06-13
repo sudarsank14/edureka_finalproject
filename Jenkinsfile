@@ -4,7 +4,7 @@ pipeline{
             stage('checkout'){
                 agent any
                 steps{
-                    git 'https://github.com/Martin1196155/Edureka_Final_Project.git'
+                    git 'https://github.com/sasirekharameshbabu/edureka_finalproject.git'
                 }
             }
             
@@ -40,9 +40,9 @@ pipeline{
             }
             
             stage('Selenium_Test'){
-                agent {label'Win_Test_server'}
+                agent {label'windows_slave'}
                 steps{
-                    git 'https://github.com/Martin1196155/Edureka_Final_Project.git'
+                    git 'https://github.com/sasirekharameshbabu/edureka_finalproject.git'
                     bat 'mvn test'
                 }
             }            
