@@ -11,7 +11,7 @@ pipeline{
             stage('Docker_Build'){
                 agent any
                 steps{
-                    sh 'sudo docker build -t martin1051/myappbypipe:latest .'
+                    sh 'sudo docker build -t prsasirekha/edureka_final_project:latest .'
                 }
             }
             
@@ -19,10 +19,10 @@ pipeline{
                 agent any
                 steps{
                     withCredentials([string(credentialsId: 'Password', variable: 'Password')]) {
-                        sh 'sudo docker login -u martin1051 -p $Password'
+                        sh 'sudo docker login -u prsasirekha -p $Password'
                     }
                 
-                    sh 'sudo docker push martin1051/myappbypipe:latest'
+                    sh 'sudo docker push prsasirekha/edureka_final_project:latest'
                 }
             }
             stage('Docker_CleanUP'){
@@ -35,7 +35,7 @@ pipeline{
             stage('Docker_Run'){
                 agent any
                 steps{
-                    sh 'sudo docker run --name mycont -d -p 8140:80 martin1051/myappbypipe:latest'
+                    sh 'sudo docker run --name mycont -d -p 8140:80 prsasirekha/edureka_final_project:latest'
                 }
             }
             
