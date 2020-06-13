@@ -17,13 +17,13 @@ pipeline{
             
             stage('Docker_Push'){
                 agent any
-                steps
+                steps{
                     withCredentials([string(credentialsId: 'password', variable: 'password')]) {
                         sh 'sudo docker login -u prsasirekha -p $password'
                     }
                 
                     sh 'sudo docker push prsasirekha/edureka_final_project:latest'
-                }
+            }
             }
             stage('Docker_CleanUP'){
                 agent any
