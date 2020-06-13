@@ -4,14 +4,14 @@ pipeline{
             stage('checkout'){
                 agent any
                 steps{
-                    git 'https://github.com/sasirekharameshbabu/edureka_finalproject.git'
+                    git 'https://github.com/sudarsank14/edureka_finalproject.git'
                 }
             }
             
             stage('Docker_Build'){
                 agent any
                 steps{
-                    sh 'sudo docker build -t prsasirekha/edureka_final_project:latest .'
+                    sh 'sudo docker build -t sudarsank/edureka_final_project:latest .'
                 }
             }
             
@@ -19,10 +19,10 @@ pipeline{
                 agent any
                 steps{
                     withCredentials([string(credentialsId: 'password', variable: 'password')]) {
-                        sh 'sudo docker login -u prsasirekha -p $password'
+                        sh 'sudo docker login -u sudarsank -p $password'
                     }
                 
-                    sh 'sudo docker push prsasirekha/edureka_final_project:latest'
+                    sh 'sudo docker push sudarsank/edureka_final_project:latest'
             }
             }
             stage('Docker_CleanUP'){
@@ -35,14 +35,14 @@ pipeline{
             stage('Docker_Run'){
                 agent any
                 steps{
-                    sh 'sudo docker run --name mycont -d -p 8140:80 prsasirekha/edureka_final_project:latest'
+                    sh 'sudo docker run --name mycont -d -p 8140:80 sudarsank/edureka_final_project:latest'
                 }
             }
             
             stage('Selenium_Test'){
                 agent {label'windows_slave'}
                 steps{
-                    git 'https://github.com/sasirekharameshbabu/edureka_finalproject.git'
+                    git 'https://github.com/sudarsank14/edureka_finalproject.git'
                     bat 'mvn test'
                 }
             }            
