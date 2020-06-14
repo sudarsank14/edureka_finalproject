@@ -18,8 +18,8 @@ pipeline{
             stage('Docker_Push'){
                 agent any
                 steps{
-                    withCredentials([string(credentialsId: 'password', variable: 'password')]) {
-                        sh 'sudo docker login -u sudarsank -p $password'
+                    withCredentials([string(credentialsId: 'sudarsank', variable: 'docker_variable')]) {
+                        sh 'sudo docker login -u sudarsank -p $docker_variable'
                     }
                 
                     sh 'sudo docker push sudarsank/edureka_final_project:latest'
